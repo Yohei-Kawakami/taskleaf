@@ -1,0 +1,22 @@
+h1 Confirmation
+
+= form_with model: @task, local: true do |f|
+  table.table.table-hover
+    tbody
+      tr
+        th= Task.human_attribute_name(:name)
+        td= @task.name
+        = f.hidden_field :name
+
+      tr
+        th= Task.human_attribute_name(:description)
+        td= simple_format(@task.description)
+        = f.hidden_field :description
+
+      tr
+        th= Task.human_attribute_name(:image)
+        td= image_tag @task.image if @task.image.attached?
+        = f.hidden_field :image
+
+  = f.submit 'Back', name: 'back', class: 'btn btn-secondary mr-3'
+  = f.submit 'Save', name: 'save', class: 'btn btn-primary'

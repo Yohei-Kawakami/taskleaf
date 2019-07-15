@@ -1,0 +1,9 @@
+h1 Login
+= form_with scope: :session,local: true do |f|
+  .form-group
+    = f.label :email, 'Email'
+    = f.text_field :email, class: 'form-control', id: 'session_email'
+  .form-group
+    = f.label :password, 'Password'
+    = f.text_field :password, class: 'form-control', id: 'session_password'
+  = f.submit 'Login', class: 'btn btn-primary'

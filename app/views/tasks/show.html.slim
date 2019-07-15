@@ -1,0 +1,29 @@
+h1 DETAIL Of THE TASK
+
+= link_to 'MAKE A NEW TASK', new_task_path, class: 'btn btn-primary'
+
+.nav.justify-content-end
+  = link_to 'ALL TASKS', tasks_path, class: 'nav-link'
+  table.table.table-hover
+    tbody
+      tr
+        th= Task.human_attribute_name(:id)
+        td= @task.id
+      tr
+        th= Task.human_attribute_name(:name)
+        td= @task.name
+      tr
+        th= Task.human_attribute_name(:description)
+        td= auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))
+      tr
+        th= Task.human_attribute_name(:image)
+        td= image_tag @task.image if @task.image.attached?
+      tr
+        th= Task.human_attribute_name(:created_at)
+        td= @task.created_at
+      tr
+        th= Task.human_attribute_name(:updated_at)
+        td= @task.updated_at
+
+= link_to 'EDIT', edit_task_path, class: 'btn btn-primary mr-3'
+= link_to 'DELETE', task_path(type: 'show'), method: :delete, data: { confirm: "You will delete Task - #{@task.name}. Is it OK??"}, class: 'btn btn-danger'

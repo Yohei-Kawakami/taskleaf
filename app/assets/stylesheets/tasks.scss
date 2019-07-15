@@ -1,0 +1,39 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-image img {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.top-table {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.js-animation {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(40px);
+    transition: all 1s;
+}
+.js-animation.is-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+.memo-study {
+    max-width: 50%;
+    margin: 0 auto;
+
+    width: 100%;
+    height: 400px;/* 縦幅を400pxに */
+    object-fit: cover;
+    zoom: 2.0;
+
+    display: block;
+    height: auto;
+    max-width: 100%;
+}

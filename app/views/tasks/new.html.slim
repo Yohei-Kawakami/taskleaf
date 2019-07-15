@@ -1,0 +1,6 @@
+h1 NEW TASK
+
+.nav.justify-content-end
+  = link_to 'ALL TASKS', tasks_path, class: 'nav-link'
+
+= render partial: 'form', locals: { task: @task }

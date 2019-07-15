@@ -1,0 +1,46 @@
+h1 ALL TASKS
+
+= search_form_for @q, class: 'mb-5' do |f|
+  .form-group.row
+    = f.label :name_cont, 'Name', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :name_cont, class: 'form-control'
+
+  .form-group.row
+    = f.label :updated_at_gteq, 'Update Time', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :updated_at_gteq, class: 'form-control'
+
+
+  .form-group
+    = f.submit class: 'btn btn-outline-primary'
+.form-group
+  = link_to 'MAKE A NEW TASK', new_task_path, class: 'btn btn-primary'
+
+.mb-3.top-table
+  = paginate @tasks
+  = page_entries_info @tasks
+
+table.table.table-hover.top-table
+  thead.thead-default
+    tr
+      th = sort_link(@q, :id)
+      th = sort_link(@q, :name)
+      th = sort_link(@q, :updated_at)
+      th = User.human_attribute_name('Edit / Delete')
+  tbody
+    - @tasks.each do |task|
+      tr id="task-#{task.id}"
+        td = task.id
+        td = link_to task.name, task
+        td = task.updated_at
+        td
+          = link_to 'EDIT', edit_task_path(task), class: 'btn btn-primary mr-3'
+          = link_to 'DELETE', task, method: :delete, remote: true, data: { confirm: "You will delete Task - #{task.name}. Is it OK??"}, class: 'btn btn-danger delete'
+
+= link_to 'EXPORT', tasks_path(format: :csv), class: 'btn btn-primary mb-3'
+
+= form_tag import_tasks_path, multipart: true, class: 'mb-3' do
+  .form-group
+    = file_field_tag :file
+  = submit_tag 'IMPORT', class: 'btn btn-primary'

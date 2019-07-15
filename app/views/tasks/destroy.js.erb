@@ -1,0 +1,5 @@
+document.querySelector("#task-<%= @task.id %>").style.display = 'none';
+
+var message = document.createElement('p');
+message.innerText = 'Deleted <%= @task.name %>. There are <%= Task.count %> tasks.';
+document.querySelector('table').insertAdjacentElement('beforebigin', message);
