@@ -13,14 +13,3 @@ Rails 5.2.1
 
 * Database creation
 postgres (PostgreSQL) 11.3
-
-* Database initialization
-
-* How to run the test suite
-rails s
-
-* Test Environment
-Rspec
-
-
-
